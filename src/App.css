@@ -1,0 +1,266 @@
+/* إعدادات عامة للصفحة */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* الهيدر */
+.header {
+  text-align: center;
+  padding: 30px 20px;
+  background-color: #1a1a1a;
+  color: white;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: #d4af37; /* لون ذهبي */
+  margin-bottom: 10px;
+}
+
+.app-name {
+  margin: 0;
+  font-size: 36px;
+}
+
+.tagline {
+  font-size: 16px;
+  color: #aaa;
+  margin-top: 10px;
+}
+
+/* شريط التنقل */
+.nav {
+  display: flex;
+  gap: 15px;
+  margin: 30px 0;
+}
+
+.nav-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: white;
+  color: #333;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.nav-btn.active {
+  background-color: #1a1a1a;
+  color: white;
+}
+
+/* منطقة المحتوى */
+.content {
+  background-color: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+}
+/* تنسيق شبكة الملابس */
+.wardrobe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+  text-align: right;
+}
+
+/* شكل كارت الملابس */
+.clothing-card {
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+}
+
+.clothing-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* زرار المسح */
+.delete-btn {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+}
+
+.delete-btn:hover {
+  background-color: #cc0000;
+}
+/* تعديلات كارت الملابس */
+.clothing-card {
+  display: flex;
+  flex-direction: column; /* نخلي الصورة فوق والكلام تحت */
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px;
+  text-align: center;
+  position: relative; /* عشان زرار المسح يبقى فوق */
+  min-height: 140px;
+}
+
+/* تعديل شكل الصورة */
+.clothing-card img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* زرار المسح يبقى في الركن */
+.delete-btn {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+/* نخلي الكلمة في سطرين لو طويلة */
+.clothing-card span {
+  font-size: 14px;
+  font-weight: 500;
+  word-break: break-word;
+}
+/* ==========================================
+   تظبيط الشكل على الموبايل (Responsive)
+   ========================================== */
+@media (max-width: 768px) {
+  /* تصغير الهيدر شوية */
+  .header {
+    padding: 20px 10px;
+  }
+  .app-name {
+    font-size: 28px;
+  }
+  .tagline {
+    font-size: 14px;
+  }
+
+  /* ترتيب التابات تحت بعضها عشان تبقى زرار أسهل في الضغط */
+  .nav {
+    flex-wrap: wrap; /* ينزلوا سطر جديد لو المساحة مش كفاية */
+    gap: 10px;
+    justify-content: center;
+    padding: 10px;
+  }
+  .nav-btn {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+
+  /* تظبيط المحتوى */
+  .content {
+    padding: 15px;
+    width: 95%;
+    max-width: none;
+  }
+
+  /* تظبيط صندوق الإضافة (المربع + زر الرفع + زر أضف) */
+  .content > div:first-child {
+    flex-direction: column; /* يخليهم تحت بعض */
+    align-items: stretch;
+  }
+  .content input, .content button {
+    width: 100%;
+  }
+
+  /* تظبيط كروت الملابس عشان تبقى أصغر وتدخل في الشاشة */
+  .wardrobe-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+  }
+  
+  /* تظبيط التحليل */
+  .analysis-container {
+    padding: 0 10px;
+  }
+}
+/* ==========================================
+   تظبيط الشكل على الموبايل (Responsive Design)
+   ========================================== */
+@media (max-width: 768px) {
+  .header {
+    padding: 20px 10px;
+  }
+  
+  .app-name {
+    font-size: 28px;
+  }
+  
+  .tagline {
+    font-size: 14px;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  .nav-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+    flex: 1;
+    text-align: center;
+  }
+
+  .content {
+    padding: 15px;
+    width: 95%;
+    max-width: none;
+    margin-top: 10px;
+  }
+
+  .wardrobe-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 10px;
+  }
+
+  /* تظبيط مربع الإضافة عشان يبقى تحت بعضه */
+  .content > div:first-child {
+    flex-direction: column;
+  }
+  
+  .content input, .content button {
+    width: 100%;
+  }
+}
